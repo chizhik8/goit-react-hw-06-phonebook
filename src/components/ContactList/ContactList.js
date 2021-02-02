@@ -1,9 +1,11 @@
 import React from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { connect } from 'react-redux';
+import contactsAction from '../../redux/actions/contactsAction';
 
 import './ContactList.css';
 
-export default function ContactList({ contacts, onRemoveContact }) {
+function ContactList({ contacts, onRemoveContact }) {
   return (
     <div>
       <TransitionGroup component="ul">
@@ -22,3 +24,15 @@ export default function ContactList({ contacts, onRemoveContact }) {
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+  contacts: state.contacts.items.filter(contact =>
+    contact.name.toLowerCase().includes(state.contacts.filter.toLowerCase()),
+  ),
+});
+
+const mapDispatchToProps = {
+  onRemoveContact: contactsAction.removeContact,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

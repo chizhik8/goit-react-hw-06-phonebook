@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { CSSTransition } from 'react-transition-group';
+// import { CSSTransition } from 'react-transition-group';
+import { connect } from 'react-redux';
+import contactsAction from '../../redux/actions/contactsAction';
 import PropTypes from 'prop-types';
 import './contactform.css';
 
-export class ContactForm extends Component {
+class ContactForm extends Component {
   static propTypes = {
     name: PropTypes.string,
     number: PropTypes.number,
@@ -33,9 +35,9 @@ export class ContactForm extends Component {
   render() {
     return (
       <>
-        <CSSTransition in={true} appear timeout={500} classNames="Logo">
-          <h1>Phonebook</h1>
-        </CSSTransition>
+        {/* <CSSTransition in={true} appear timeout={500} classNames="Logo"> */}
+        <h1>Phonebook</h1>
+        {/* </CSSTransition> */}
         <form onSubmit={this.handleSubmit}>
           <label>
             Name
@@ -61,3 +63,9 @@ export class ContactForm extends Component {
     );
   }
 }
+
+const mapDispatchToProps = {
+  onAddContacts: contactsAction.addContacts,
+};
+
+export default connect(null, mapDispatchToProps)(ContactForm);

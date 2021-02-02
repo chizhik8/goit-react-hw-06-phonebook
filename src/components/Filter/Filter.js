@@ -1,23 +1,32 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import contactsAction from '../../redux/actions/contactsAction';
 
-export class Filter extends Component {
+class Filter extends Component {
+  static propTypes = {
+    filter: PropTypes.string,
+  };
 
-    static propTypes = {
-           filter: PropTypes.string,
-       }
-
-    handleInput = (e) => {
-        this.props.onInputFilter(e.target.value)
-    }
-    render() {
-        return (
-            <div>
-                <h3>Find contacts by name</h3>
-                <input type='text' onChange={this.handleInput} />
-            </div>
-        )
-    }
+  handleInput = e => {
+    this.props.onInputFilter(e.target.value);
+  };
+  render() {
+    return (
+      <div>
+        <h3>Find contacts by name</h3>
+        <input type="text" onChange={this.handleInput} />
+      </div>
+    );
+  }
 }
 
-export default Filter
+const mapStateToProps = state => ({
+  value: state.contacts.filter,
+});
+
+const mapDispatchToProps = {
+  onInputFilter: contactsAction.addFilter,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);
