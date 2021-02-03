@@ -14,6 +14,8 @@ const addFilter = createAction('contacts/addFilter', filter => ({
   payload: { filter },
 }));
 
+export default { addContacts, removeContact, addFilter };
+
 // const addContacts = (name, number) => ({
 //   type: actionTypes.ADD,
 //   payload: { contact: { id: uuidv4(), name, number } },
@@ -28,5 +30,3 @@ const addFilter = createAction('contacts/addFilter', filter => ({
 //   type: actionTypes.FILTER,
 //   payload: { filter },
 // });
-
-export default { addContacts, removeContact, addFilter };
