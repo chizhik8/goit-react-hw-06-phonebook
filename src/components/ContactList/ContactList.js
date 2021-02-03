@@ -36,17 +36,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
-
-// componentDidMount() {
-//   if (localStorage.getItem('contacts') !== null) {
-//     this.setState({
-//       contacts: JSON.parse(localStorage.getItem('contacts')),
-//     });
-//   }
-// }
-
-// componentDidUpdate(prevState) {
-//   if (prevState.contacts !== this.state.contacts) {
-//     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-//   }
-// }

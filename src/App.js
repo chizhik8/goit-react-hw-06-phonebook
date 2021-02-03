@@ -10,24 +10,6 @@ export default function App() {
       <ContactForm />
       <Filter />
       <ContactList />
-
-      {/* {this.state.contacts.length ? (
-          <Filter onInputFilter={this.addFilter} />
-        ) : (
-          <h2>Contact list is empty. Please add contact.</h2>
-        )} */}
-
-      {/* {this.state.filter.length ? (
-          <ContactList
-            contacts={this.taskFilter()}
-            onRemoveContact={this.removeContact}
-          />
-        ) : (
-          <ContactList
-            contacts={this.state.contacts}
-            onRemoveContact={this.removeContact}
-          />
-        )} */}
     </div>
   );
 }
